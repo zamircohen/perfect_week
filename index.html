@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Week - The only planner you need</title>
+    <link href="styles.css" rel="stylesheet" />    
+</head>
+
+<body>
+
+    
+
+    <h1>Perfect Week</h1>
+    
+    <h2>YOUR DAILY CHECKLIST</h2> 
+
+        <table>
+        <tr>
+            <th>Task</th>
+            <th>Monday</th>
+            <th>Tuesday</th>        
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+            <th>Times</th>
+            <th>Delete</th>
+        </tr>
+
+        
+    <div id="newRow">
+        <label for="newCategory">Choose category</label>
+        <select name="category" id="newCategory" onchange="categoryChoice()"></select>
+
+        <label for="newRowType">Choose typ of task</label>
+        <select name="" id="newRowType"></select>
+
+        <label for="amountOfTimes">Choose the amount of times</label>
+        <input type="number" id="amountOfTimes" placeholder="1" min="1" max="7" step="1" required list>
+
+        <button type="submit" id="createButton">Create task</button>
+    <div>
+
+
+    <p id="theMessage">Your new task</p>
+
+    </table>
+
+    <div id="newTaskRow"></div> 
+
+    <div>
+        <p id="totalAmountOfTasks"></p>
+    </div>
+
+   
+    <br>
+
+    <h2>YOUR WEEKLY GOALS</h2>
+    <table>
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+            <td><input type="text" id="weeklyGoal"></td>
+        </tr>
+
+    </table>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>

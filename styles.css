@@ -1,0 +1,59 @@
+body {
+  font: 100% Helvetica, sans-serif;
+}
+
+/*# sourceMappingURL=styles.css.map */
+
+
+th {
+  color: blue;
+  border-bottom: 2px;
+  text-align: center;
+  height: 5px;
+  width: 100px;
+  border: 1px solid black;
+  /* border-collapse: collapse; */
+}
+
+td {
+  text-align: center;
+  height: 5px;
+  width: 100px;
+  border: 1px solid black;
+  /* border-collapse: collapse; */
+}
+
+table {
+    background-color: antiquewhite;
+    border-collapse: collapse;
+}
+
+.td:hover {
+  background-color: lightgrey;
+  color: lightgrey;
+}
+
+
+
+
+
+
+
+
+
+/* PROGRESS BAR */
+
+
+.progress {
+  width: 200px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: #9bdfff;
+}
+
+.progress > div {
+  height: 100%;
+  border-radius: 6px;
+  background-color: #25baff;
+  transition: width 200ms;
+}
