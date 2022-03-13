@@ -190,7 +190,6 @@ button.addEventListener("click", () => {
 
         amountOfTasks = amountOfTasks + chosenAmount
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
-
 })
 
 

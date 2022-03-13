@@ -28,11 +28,9 @@ table {
     border-collapse: collapse;
 }
 
-.td:hover {
-  background-color: lightgrey;
-  color: lightgrey;
+td:hover {
+  background-color: lightblue;  
 }
-
 
 
 
