@@ -156,6 +156,12 @@ button.addEventListener("click", () => {
             // the end of the table row
             
             var cell = document.createElement("td");
+
+            cell.addEventListener('click', function handleClick(event) {
+                $(this).css('backgroundColor', '#FF0000');
+            });
+
+
             var cellText = document.createTextNode(``);
             cell.appendChild(cellText);
             row.appendChild(cell);
@@ -181,6 +187,7 @@ button.addEventListener("click", () => {
           tblBody.appendChild(row);
         }
       
+        
         // put the <tbody> in the <table>
         tbl.appendChild(tblBody);
         // appends <table> into <body>
@@ -191,12 +198,6 @@ button.addEventListener("click", () => {
         amountOfTasks = amountOfTasks + chosenAmount
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
 })
-
-
-
-
-
-
 
 
 
