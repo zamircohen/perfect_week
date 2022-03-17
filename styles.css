@@ -33,7 +33,17 @@ table {
 } */
 
 
+#myProgress {
+  width: 400px;
+  height: 10px;
+  background-color: lightgray;
+}
 
+#myBar {
+  width: 1%;
+  height: 10px;
+  background-color: #AAFF00;
+}
 
 
 

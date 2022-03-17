@@ -57,6 +57,7 @@ let rowNumber = 0;
 
 let amountOfTasks = 0;
 let amountOfTasksDone = 0;
+let progress = 0;
 
 
 // Gets all the HTML elements
@@ -163,8 +164,16 @@ button.addEventListener("click", () => {
             cell.addEventListener('click', function handleClick(event) {
               $(this).css('backgroundColor', '#AAFF00');
                 amountOfTasksDone = amountOfTasksDone + 1
-                let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);
+                let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
                 completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
+              
+                var elem = document.getElementById("myBar");
+                let totalprogress = 400 / amountOfTasks;
+
+                progress = progress + totalprogress
+                elem.style.width = progress + "px"
+
+              
               });
 
 
@@ -193,6 +202,11 @@ button.addEventListener("click", () => {
             //     completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
             // })
            
+
+
+
+
+
 // *****************************************************************************************************************************
 
 
@@ -245,6 +259,8 @@ button.addEventListener("click", () => {
         console.log(chosenAmount)
 
 })
+
+
 
 
 
