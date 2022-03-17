@@ -24,13 +24,13 @@ td {
 }
 
 table {
-    background-color: antiquewhite;
+    /* background-color: white; */
     border-collapse: collapse;
 }
 
-td:hover {
+/* td:hover {
   background-color: lightblue;  
-}
+} */
 
 
 

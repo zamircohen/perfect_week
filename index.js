@@ -56,6 +56,8 @@ const cellIdentification = []
 let rowNumber = 0;
 
 let amountOfTasks = 0;
+let amountOfTasksDone = 0;
+
 
 // Gets all the HTML elements
 const selectTypeOfCategory = document.getElementById("newCategory")
@@ -64,6 +66,7 @@ const selectAmountOfTimes = document.getElementById("amountOfTimes")
 const theMessage = document.getElementById("theMessage")
 const button = document.getElementById("createButton")
 const amountMessage = document.getElementById("totalAmountOfTasks")
+const completedMessage = document.getElementById("totalAmountOfTasksDone")
 
 // Fills the select element with all the options from the CHOICES arrays
 
@@ -123,10 +126,6 @@ button.addEventListener("click", () => {
     const chosenTask = selectTypeOfTask.options[selectTypeOfTask.selectedIndex].text
     const chosenAmount = parseInt(selectAmountOfTimes.value)
 
-    console.log(chosenTask)
-    console.log(selectTypeOfTask)
-    console.log(selectTypeOfTask.value)  
-
     rowNumber = rowNumber + 1;
 
     theMessage.innerHTML = `You added ${chosenTask} for ${chosenAmount} times a week`
@@ -157,9 +156,44 @@ button.addEventListener("click", () => {
             
             var cell = document.createElement("td");
 
+
+// ***************************************************************************************
+
+
             cell.addEventListener('click', function handleClick(event) {
-                $(this).css('backgroundColor', '#FF0000');
-            });
+              $(this).css('backgroundColor', '#AAFF00');
+                amountOfTasksDone = amountOfTasksDone + 1
+                let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);
+                completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
+              });
+
+
+         
+            //   const setColor = "#000000"
+
+            // cell.addEventListener('click', function handleClick(event) {
+                             
+            //     let color = setColor
+                
+            //     if (color === "#000000") {
+            //         color = "#AAFF00";
+            //         // id = 1
+            //         // amountOfTasksDone = amountOfTasksDone + 1
+            //     } else if (color === "#AAFF00") {
+            //         color = "white";
+            //         // id = 0
+            //         // amountOfTasksDone = amountOfTasksDone - 1
+            //     }
+                
+            //     console.log(color)
+
+            //     $(this).css("background-color", color);
+                
+            //     let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);
+            //     completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
+            // })
+           
+// *****************************************************************************************************************************
 
 
             var cellText = document.createTextNode(``);
@@ -177,6 +211,15 @@ button.addEventListener("click", () => {
             cellIdentification.push(`r${rowNumber}c${j+2}`)  
 
 
+
+            //createDoneCell()
+            var cellDone = document.createElement("td");
+            var cellCheckDone = document.createTextNode("");
+            cellDone.appendChild(cellCheckDone);
+            row.appendChild(cellDone);
+
+
+            // createDeleteCell()
             var cellDelete = document.createElement("button");
             var cellCheckDelete = document.createTextNode("🗑️");
             cellDelete.appendChild(cellCheckDelete);
@@ -197,11 +240,24 @@ button.addEventListener("click", () => {
 
         amountOfTasks = amountOfTasks + chosenAmount
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
+
+        
+        console.log(chosenAmount)
+
 })
 
 
 
 
+$( "td" ).on( "mouseover", function() {
+  $( this ).css( "background-color", "red" );
+});
 
 
-
+$( "td" )
+  .on( "mouseenter", function() {
+    $( this ).css({
+      "background-color": "yellow",
+      "font-weight": "bolder"
+    })
+  })
