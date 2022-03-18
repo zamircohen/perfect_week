@@ -13,7 +13,10 @@ const taskChoices1 = [
     "Stretch",
     "Yoga",
     "Swimming",
-    "Walking"
+    "Walking",
+    "Spinning",
+    "Climbing",
+    "Class"
 ]
 
 const taskChoices2 = [
@@ -21,25 +24,26 @@ const taskChoices2 = [
   "Meet friends",
   "Reading",
   "Work",
-  "Course"
+  "Course",
 ]
 
 const taskChoices3 = [
   "Designing",
   "Photography",
-  "Instagram"
+  "Arts & Crafts"
 ]
 
 const taskChoices4 = [
   "Meditation",
-  "Mindfulness"
+  "Mindfulness",
+  "Social media"
 ]
 
 const taskChoices5 = [
   "Movies",
   "Consert",
   "Dining",
-  "Museum"
+  "Museum",
 ]
 
 
@@ -162,6 +166,8 @@ button.addEventListener("click", () => {
 
 
             cell.addEventListener('click', function handleClick(event) {
+              
+              if (progress < 400 ) {
               $(this).css('backgroundColor', '#AAFF00');
                 amountOfTasksDone = amountOfTasksDone + 1
                 let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
@@ -172,7 +178,7 @@ button.addEventListener("click", () => {
 
                 progress = progress + totalprogress
                 elem.style.width = progress + "px"
-
+              }
               
               });
 
