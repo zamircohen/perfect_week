@@ -167,17 +167,25 @@ button.addEventListener("click", () => {
 
             cell.addEventListener('click', function handleClick(event) {
               
-              if (progress < 400 ) {
+              if (progress < 100 ) {
               $(this).css('backgroundColor', '#AAFF00');
                 amountOfTasksDone = amountOfTasksDone + 1
                 let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
                 completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
               
                 var elem = document.getElementById("myBar");
-                let totalprogress = 400 / amountOfTasks;
+                // let totalprogress = 400 / amountOfTasks;
 
-                progress = progress + totalprogress
-                elem.style.width = progress + "px"
+                progress = percentageOfTasksDone
+                // progress = progress + totalprogress
+                elem.style.width = progress + "%"
+
+                var row = $(this).closest("tr").text().match(/\d+/)[0]
+                cellDone.appendChild(row)
+
+
+                console.log(row)
+
               }
               
               });
@@ -209,9 +217,15 @@ button.addEventListener("click", () => {
             // })
            
 
+            // var myTable = $('#myTable').DataTable();
+
+            // cellDelete.addEventListener('click', function handleClick(event) {  
+            
 
 
-
+             
+                
+              
 
 // *****************************************************************************************************************************
 
@@ -241,7 +255,7 @@ button.addEventListener("click", () => {
 
             // createDeleteCell()
             var cellDelete = document.createElement("button");
-            var cellCheckDelete = document.createTextNode("🗑️");
+            var cellCheckDelete = document.createTextNode("Delete");
             cellDelete.appendChild(cellCheckDelete);
             row.appendChild(cellDelete);
 
@@ -262,9 +276,15 @@ button.addEventListener("click", () => {
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
 
         
-        console.log(chosenAmount)
+        $(document).ready(function() {
+          $('tr').on("click", function(e) {
+            index = $(this).closest('tr').index();
+            $(this).remove();
+          });
+        });
 
 })
+
 
 
 
