@@ -62,6 +62,7 @@ let rowNumber = 0;
 let amountOfTasks = 0;
 let amountOfTasksDone = 0;
 let progress = 0;
+let rowAmountOfTasks = 0;
 
 
 // Gets all the HTML elements
@@ -180,11 +181,12 @@ button.addEventListener("click", () => {
                 // progress = progress + totalprogress
                 elem.style.width = progress + "%"
 
-                var row = $(this).closest("tr").text().match(/\d+/)[0]
-                cellDone.appendChild(row)
+                var rowAmount = $(this).closest("tr").text().match(/\d+/)[0]
+                rowAmountOfTasks = rowAmount
+                // cellDone.appendChild(rowAmount)
 
 
-                console.log(row)
+                console.log(`Row amount ${rowAmount}`)
 
               }
               
@@ -276,12 +278,30 @@ button.addEventListener("click", () => {
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
 
         
-        $(document).ready(function() {
-          $('tr').on("click", function(e) {
-            index = $(this).closest('tr').index();
-            $(this).remove();
+        
+          $(cellDelete).on("click", function(e) {
+        
+            var rowAmountOfTasks = $(this).closest("tr").text().match(/\d+/)[0]
+        
+            amountOfTasks = amountOfTasks - rowAmountOfTasks
+            let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
+            var elem = document.getElementById("myBar");
+                // let totalprogress = 400 / amountOfTasks;
+
+                progress = percentageOfTasksDone
+                // progress = progress + totalprogress
+                elem.style.width = progress + "%"
+                $(this).closest('tr').remove();
+
+                amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
+
+            console.log(`AmountOfTasks ${amountOfTasks}`)
+            console.log(`percentageOfTasksDone ${percentageOfTasksDone}`)
+            console.log(`progress ${progress}`)
+            console.log(`rowAmountOfTasks ${rowAmountOfTasks}`)
+            
+            
           });
-        });
 
 })
 
