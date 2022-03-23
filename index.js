@@ -169,7 +169,8 @@ button.addEventListener("click", () => {
             cell.addEventListener('click', function handleClick(event) {
               
               if (progress < 100 ) {
-              $(this).css('backgroundColor', '#AAFF00');
+              $(this).css('backgroundColor', '#AAFF00').append("txt");
+                  
                 amountOfTasksDone = amountOfTasksDone + 1
                 let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
                 completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
@@ -282,6 +283,15 @@ button.addEventListener("click", () => {
           $(cellDelete).on("click", function(e) {
         
             var rowAmountOfTasks = $(this).closest("tr").text().match(/\d+/)[0]
+
+            let amountOfTasksDone = 0
+
+            $(this).closest("tr").filter(function() {
+              if ("txt") {
+                amountOfTasksDone ++
+              }
+            })
+             
         
             amountOfTasks = amountOfTasks - rowAmountOfTasks
             let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
@@ -294,12 +304,17 @@ button.addEventListener("click", () => {
                 $(this).closest('tr').remove();
 
                 amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
+                completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
 
+            let rowinfo = $(this).closest('tr').css('background-color')
+
+            console.log(`rowinfo ${rowinfo}`)
             console.log(`AmountOfTasks ${amountOfTasks}`)
             console.log(`percentageOfTasksDone ${percentageOfTasksDone}`)
             console.log(`progress ${progress}`)
             console.log(`rowAmountOfTasks ${rowAmountOfTasks}`)
-            
+            // console.log(`rowAmountOfTasksDone ${rowAmountOfTasksDone}`)
+            console.log(`clickedCells ${clickedCells}`)
             
           });
 
