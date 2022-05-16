@@ -134,6 +134,9 @@ button.addEventListener("click", () => {
 
     rowNumber = rowNumber + 1;
 
+    // amountOfTasks = 0
+    console.log(amountOfTasks)
+
     theMessage.innerHTML = `You added ${chosenTask} for ${chosenAmount} times a week`
 
         // get the reference for the body
@@ -169,7 +172,7 @@ button.addEventListener("click", () => {
             cell.addEventListener('click', function handleClick(event) {
               
               if (progress < 100 ) {
-              $(this).css('backgroundColor', '#AAFF00').append("txt");
+              $(this).css('backgroundColor', '#AAFF00').append("DONE!");
                   
                 amountOfTasksDone = amountOfTasksDone + 1
                 let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
@@ -278,20 +281,19 @@ button.addEventListener("click", () => {
         amountOfTasks = amountOfTasks + chosenAmount
         amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
 
+        let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);
+
+        amountMessage.innerText = `You have a total of ${amountOfTasks} tasks this week.`
+                completedMessage.innerText = `You have completed a total of ${amountOfTasksDone} (${percentageOfTasksDone} %) tasks this week.`
+
         
         
           $(cellDelete).on("click", function(e) {
         
             var rowAmountOfTasks = $(this).closest("tr").text().match(/\d+/)[0]
 
-            let amountOfTasksDone = 0
-
-            $(this).closest("tr").filter(function() {
-              if ("txt") {
-                amountOfTasksDone ++
-              }
-            })
-             
+            var rowAmountOfTasksDone = 0
+                        
         
             amountOfTasks = amountOfTasks - rowAmountOfTasks
             let percentageOfTasksDone = parseInt((amountOfTasksDone / amountOfTasks) * 100);            
@@ -313,8 +315,8 @@ button.addEventListener("click", () => {
             console.log(`percentageOfTasksDone ${percentageOfTasksDone}`)
             console.log(`progress ${progress}`)
             console.log(`rowAmountOfTasks ${rowAmountOfTasks}`)
-            // console.log(`rowAmountOfTasksDone ${rowAmountOfTasksDone}`)
-            console.log(`clickedCells ${clickedCells}`)
+            console.log(`rowAmountOfTasksDone ${rowAmountOfTasksDone}`)
+            console.log(`items ${items}`)
             
           });
 
