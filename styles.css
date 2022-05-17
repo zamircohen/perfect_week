@@ -67,3 +67,7 @@ table {
   background-color: #25baff;
   transition: width 200ms;
 }
+
+#txtOther {
+  background-color: lightgray;
+}

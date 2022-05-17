@@ -142,12 +142,6 @@ button.addEventListener("click", () => {
     // const chosenTask = selectTypeOfTask.options[selectTypeOfTask.selectedIndex].text
     const chosenAmount = parseInt(selectAmountOfTimes.value)
 
-    console.log(`${chosenTask}`)
-    console.log(`selectTypeOfCategory ${selectTypeOfCategory.value}`)
-    console.log(`selectTypeOfTask ${selectTypeOfTask.value}`)
-    // console.log(`selectTypeOfCategory ${selectTypeOfCategory}`)
-    // console.log(`selectTypeOfCategory ${selectTypeOfCategory}`)
-
     rowNumber = rowNumber + 1;
 
     // amountOfTasks = 0
@@ -361,7 +355,9 @@ button.addEventListener("click", () => {
       if ($(this).val() == 4) {
           $("#txtOther").removeAttr("disabled");
           $("#txtOther").focus();
+          $("#txtOther").css( "background-color", "white" );
       } else {
           $("#txtOther").attr("disabled", "disabled");
+          $("#txtOther").css( "background-color", "lightgrey" );
       }
   });
