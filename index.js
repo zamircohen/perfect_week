@@ -39,12 +39,12 @@ const taskChoices4 = [
   "Social media"
 ]
 
-const taskChoices5 = [
-  "Movies",
-  "Consert",
-  "Dining",
-  "Museum",
-]
+// const taskChoices5 = [
+//   "Movies",
+//   "Consert",
+//   "Dining",
+//   "Museum",
+// ]
 
 
 let categoryFromList = ""
@@ -119,18 +119,34 @@ function categoryChoice() {
       changeTask(taskChoices4);
       newTasks = [...taskChoices4];
       break;
-    case '4':
-      changeTask(taskChoices5);
-      newTasks = [...taskChoices5];
-      break;
+    // case '4':
+    //   changeTask(taskChoices5);
+    //   newTasks = [...taskChoices5];
+    //   break;
   }
 }
 
 
+
 button.addEventListener("click", () => {
-    
-    const chosenTask = selectTypeOfTask.options[selectTypeOfTask.selectedIndex].text
+   
+    let chosenTask = ""
+
+    if(selectTypeOfCategory.value != 4) {
+      chosenTask = selectTypeOfTask.options[selectTypeOfTask.selectedIndex].text
+    } else {
+      chosenTask = document.getElementById("txtOther").value
+    }
+
+    // const chosenTask = document.getElementById("txtOther").value
+    // const chosenTask = selectTypeOfTask.options[selectTypeOfTask.selectedIndex].text
     const chosenAmount = parseInt(selectAmountOfTimes.value)
+
+    console.log(`${chosenTask}`)
+    console.log(`selectTypeOfCategory ${selectTypeOfCategory.value}`)
+    console.log(`selectTypeOfTask ${selectTypeOfTask.value}`)
+    // console.log(`selectTypeOfCategory ${selectTypeOfCategory}`)
+    // console.log(`selectTypeOfCategory ${selectTypeOfCategory}`)
 
     rowNumber = rowNumber + 1;
 
@@ -319,7 +335,6 @@ button.addEventListener("click", () => {
             console.log(`items ${items}`)
             
           });
-
 })
 
 
@@ -328,15 +343,25 @@ button.addEventListener("click", () => {
 
 
 
-$( "td" ).on( "mouseover", function() {
-  $( this ).css( "background-color", "red" );
-});
+// $( "td" ).on( "mouseover", function() {
+//   $( this ).css( "background-color", "red" );
+// });
 
 
-$( "td" )
-  .on( "mouseenter", function() {
-    $( this ).css({
-      "background-color": "yellow",
-      "font-weight": "bolder"
-    })
-  })
+// $( "td" )
+//   .on( "mouseenter", function() {
+//     $( this ).css({
+//       "background-color": "yellow",
+//       "font-weight": "bolder"
+//     })
+//   })
+
+
+  $("#newCategory").change(function () {
+      if ($(this).val() == 4) {
+          $("#txtOther").removeAttr("disabled");
+          $("#txtOther").focus();
+      } else {
+          $("#txtOther").attr("disabled", "disabled");
+      }
+  });
